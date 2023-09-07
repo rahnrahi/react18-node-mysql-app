@@ -1,4 +1,4 @@
-const Joi = require('joi'); 
+require("dotenv").config();
 const ExpressJoiSwagger = require('express-joi-swagger');
 // Instantiate ExpressJoiSwagger
 const joiSwagger = new ExpressJoiSwagger({
@@ -8,8 +8,8 @@ const joiSwagger = new ExpressJoiSwagger({
         description: 'RESTful public service for retrieving and setting User Sessions.',
         version: 'v1.0.2'
       },
-      host: 'http://localhost:7003',
-      schemes: ['http', 'https'],
+      host: `http://localhost:${process.env.PORT}`,
+      schemes: ['http'],
       consumes: ['application/json'],
       produces: ['application/json'],
       defaultResponses: [200, 500]
