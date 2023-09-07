@@ -6,7 +6,7 @@ require('dotenv').config();
 const joiSwagger = require("./app/validators/validator");
 
 var corsOptions = {
-  origin: "http://localhost:8081",
+  origin: `http://localhost:${process.env.CLIENT_PORT}`,
 };
 
 app.use(cors(corsOptions));
@@ -21,7 +21,7 @@ const db = require("./app/models");
 
 // simple route
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
+  res.json({ message: "Welcome to wallet api" });
 });
 
 app.use('/api', require("./app/routes/wallet.routes"));
