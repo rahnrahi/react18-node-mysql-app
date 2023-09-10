@@ -62,6 +62,10 @@ const TransactionsTable: React.FC = () => {
       sort: true,
       onSort: handleSort,
     },
+    {
+      dataField: "type",
+      text: "Credit/Debit",
+    },
   ];
 
   return (
