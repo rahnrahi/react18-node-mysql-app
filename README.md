@@ -4,34 +4,34 @@ The `/client` and `/server` project components can be installed and ran independ
 
 ### Project Components
 
-* `/` 
-	* `docker-compose.yml` file to orchestrate containers
 * `/client`
 	* ReactJS frontend
-	* `ngnix.conf` file
-	* `Dockerfile` to build frontend image
 * `/server`
 	* Node  TypeScript API
-	* MySQL database (no ORM)
-	* Tests written in Jest
-	* API documented in Swagger
-	* `Dockerfile` to build backend image
+	* MySQL database (sequalize ORM)
+	* API documented in Swagger http://localhost:5001/swagger
 
 ### Project Setup
 
-**1.** In the `/` folder, configure .env file and map Docker ports to db connection.
+**1.** In the `/client` folder, configure .env file and map Docker ports to db connection.
 ```sh
 cp .env-sample .env
+In env file put below ENV VARS
+REACT_APP_API_URL=http://localhost:5001/api
+
 ``` 
 
 **2.** In the `/server` folder, configure .env file and map Docker ports to db connection.
 ```sh
 cp .env-sample .env
+In env file put below ENV VARS
+process.env.DB_HOST 
+process.env.DB_USER
+process.env.DB_PASS 
+process.env.DB_NAME
 ``` 
 
-**3.** follow the steps in `/server/README.md` to populate your local MYSQL database. This is the database Docker will clone and place inside the server container.
-
-**4.** Build React, Node, and MySQL containers
+**4.** Build Adminer, and MySQL containers
 ```sh
 docker-compose up
 ```
@@ -41,8 +41,9 @@ docker-compose up -d
 ```
 
 ### Up and running
-Site URL: `localhost:{REACT_LOCAL_PORT}`
-Swagger API: `{Site URL}/api/v1/docs/`
+Site URL: `http://localhost:3000/`
+Swagger API: `http://localhost:5001/swagger`
+API root: `http://localhost:5001/api`
 
 ### Shutting down
 ```sh
