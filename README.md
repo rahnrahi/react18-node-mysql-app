@@ -1,4 +1,4 @@
-# Dockerized RESTful API
+# Wallet RESTful API
 
 The `/client` and `/server` project components can be installed and ran independently, but the purpose of this repository is to demonstrate how to build and deploy a full-stack application using Docker.
 
