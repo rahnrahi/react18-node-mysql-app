@@ -70,6 +70,8 @@ export default function SetupAccount() {
   };
 
   React.useEffect(() => {
+    const walletId = localStorage.getItem("walletId");
+    walletId && navigate("/transactions");
     validator.current.showMessages();
   }, []);
 
