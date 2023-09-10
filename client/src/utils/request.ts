@@ -48,7 +48,7 @@ export async function request(
   url: string,
   options?: RequestInit,
 ): Promise<{} | { err: ResponseError }> {
-  const fetchResponse = await fetch(url, options);
+  const fetchResponse = await fetch(`${process.env.REACT_APP_API_URL}/${url}`, options);
   const response = checkStatus(fetchResponse);
   return parseJSON(response);
 }

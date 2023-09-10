@@ -12,24 +12,25 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { GlobalStyle } from 'styles/global-styles';
 
-import CardDetailsPage from './pages/CardDetailsPage/Loadable';
+import AddTransaction from './pages/AddTransaction/Loadable';
 import { NotFoundPage } from './pages/NotFoundPage/Loadable';
-import { useTranslation } from 'react-i18next';
+import TransactionsPage  from './pages/Transactions/Loadable';
+import SetupAccountPage from './pages/SetupAccount/Loadable';
 
 export function App() {
-  const { i18n } = useTranslation();
   return (
     <BrowserRouter>
       <Helmet
-        titleTemplate="%s - React Boilerplate"
-        defaultTitle="React Boilerplate"
-        htmlAttributes={{ lang: i18n.language }}
+        titleTemplate="%s - Wallet"
+        defaultTitle="React Wallet APP"
       >
-        <meta name="description" content="A React Boilerplate application" />
+        <meta name="description" content="Wallet Transactions" />
       </Helmet>
 
       <Routes>
-        <Route path="/" element={<CardDetailsPage />} />
+        <Route path="/" element={<SetupAccountPage />} />
+        <Route path="/add-transaction" element={<AddTransaction />} />
+        <Route path="/transactions" element={<TransactionsPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <GlobalStyle />

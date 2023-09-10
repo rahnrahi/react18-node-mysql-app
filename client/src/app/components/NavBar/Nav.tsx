@@ -1,28 +1,37 @@
-import * as React from 'react';
-import styled from 'styled-components/macro';
-import { ReactComponent as DocumentationIcon } from './assets/documentation-icon.svg';
-import { ReactComponent as GithubIcon } from './assets/github-icon.svg';
+import { RootState } from "app/store";
+import { getWalletDetails } from "app/store/actions";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "app/store";
+import styled from "styled-components/macro";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function Nav() {
+  const walletBalance = useSelector(
+    (state: RootState) => state.wallet.walletBalance
+  );
+  const reduxDispatch = useDispatch();
+  let navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    const walletId = localStorage.getItem("walletId");
+    if (!walletId && pathname!=="/") {
+      navigate("/");
+    } else if(walletId) {
+      reduxDispatch(getWalletDetails(walletId));
+    }
+  }, []);
   return (
     <Wrapper>
       <Item
-        href="https://cansahin.gitbook.io/react-boilerplate-cra-template/"
-        target="_blank"
+        href="/add-transaction"
         title="Documentation Page"
         rel="noopener noreferrer"
       >
-        <DocumentationIcon />
-        Documentation
+        Add Transaction
       </Item>
-      <Item
-        href="https://github.com/react-boilerplate/react-boilerplate-cra-template"
-        target="_blank"
-        title="Github Page"
-        rel="noopener noreferrer"
-      >
-        <GithubIcon />
-        Github
+      <Item href="/transactions" title="Github Page" rel="noopener noreferrer">
+        Transaction List (Wallet Balance : ${walletBalance})
       </Item>
     </Wrapper>
   );

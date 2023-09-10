@@ -13,10 +13,13 @@ exports.getBalanceByWalletId = async (walletId) => {
     : { balance: 0, createdAt: null };
 };
 
-exports.getTransactions = async (userWalletId, limit = 0, offset = 10) => {
+exports.getTransactions = async (userWalletId, limit = 0, offset = 10, sort="createdAt", order="DESC" ) => {
+  const transactionCount  = await transactions.count({
+     where: { userWalletId },
+  })
   const transactionList = await transactions.findAll({
     where: { userWalletId },
-    order: [["createdAt", "DESC"]],
+    order: [[sort, order]],
     attributes: [
       ["transactionId", "id"],
       ["userWalletId", "walletId"],
@@ -30,5 +33,5 @@ exports.getTransactions = async (userWalletId, limit = 0, offset = 10) => {
     const type = Number(transaction.dataValues.amount)>=0? "CREDIT":"DEBIT";
     return {...transaction.dataValues, type}
   });
-  return list;
+  return {list, totalCount: transactionCount};
 };

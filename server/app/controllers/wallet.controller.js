@@ -32,8 +32,8 @@ exports.setUp = async (req, res) => {
 
 // Retrieve all transactions.
 exports.findAll = async (req, res) => {
-  const { walletId, limit, offset } = req.query;
-  const transactions = await getTransactions(walletId, parseInt(limit), parseInt(offset));
+  const { walletId, limit, offset, sort, order } = req.query;
+  const transactions = await getTransactions(walletId, parseInt(limit), parseInt(offset), sort, order );
   return res.json(transactions);
 };
 
