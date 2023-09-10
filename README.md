@@ -1,4 +1,4 @@
-# Wallet RESTful API
+# Dockerized RESTful API
 
 The `/client` and `/server` project components can be installed and ran independently, but the purpose of this repository is to demonstrate how to build and deploy a full-stack application using Docker.
 
@@ -44,6 +44,9 @@ docker-compose up -d
 Site URL: `http://localhost:3000/`
 Swagger API: `http://localhost:5001/swagger`
 API root: `http://localhost:5001/api`
+You can view all the end points here : `http://jsonblob.com/1150494523364597760`
+
+
 
 ### Shutting down
 ```sh
