@@ -42,8 +42,11 @@ docker-compose up -d
 
 ### Up and running
 Site URL: `http://localhost:3000/`
+
 Swagger API: `http://localhost:5001/swagger`
+
 API root: `http://localhost:5001/api`
+
 You can view all the end points here : `http://jsonblob.com/1150494523364597760`
 
 
