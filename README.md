@@ -7,7 +7,7 @@ The `/client` and `/server` project components can be installed and ran independ
 * `/client`
 	* ReactJS frontend
 * `/server`
-	* Node  TypeScript API
+	* Node  REST API
 	* MySQL database (sequalize ORM)
 	* API documented in Swagger http://localhost:5001/swagger
 
